@@ -1,14 +1,14 @@
 param(
     [string] $Name = 'ntv2',
-    [string] $Version = '17.0.1',
+    [string] $Version = '18.1.0',
     [string] $Uri = 'https://github.com/aja-video/libajantv2.git',
-    [string] $Hash = 'b6acce6b135c3d9ae7a2bce966180b159ced619f',
+    [string] $Hash = '21574e4e8e24f53171ffb07792d61d06d3b6c11c',
     [array] $Targets = @('x64'),
     [switch] $ForceStatic = $true
 )
 
 function Setup {
-    Setup-Dependency -Uri $Uri -Hash $Hash -DestinationPath $Path
+    Setup-Dependency -Uri $Uri -Hash $Hash -DestinationPath $Path -Branch main
 }
 
 function Clean {
@@ -38,7 +38,7 @@ function Configure {
         '-DAJANTV2_DISABLE_DRIVER:BOOL=ON'
         '-DAJANTV2_DISABLE_TESTS:BOOL=ON'
         '-DAJANTV2_DISABLE_TOOLS:BOOL=ON'
-        '-DAJANTV2_DISABLE_PLUGINS:BOOL=ON'
+        '-DAJANTV2_DISABLE_PLUGIN_LOAD:BOOL=ON'
         '-DAJA_INSTALL_SOURCES:BOOL=OFF'
         '-DAJA_INSTALL_HEADERS:BOOL=ON'
         '-DAJA_INSTALL_MISC:BOOL=OFF'
