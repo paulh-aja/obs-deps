@@ -2,9 +2,10 @@ autoload -Uz log_debug log_error log_info log_status log_output
 
 ## Dependency Information
 local name='ntv2'
-local version='17.0.1'
+local version='18.1.0'
 local url='https://github.com/aja-video/libajantv2.git'
-local hash='b6acce6b135c3d9ae7a2bce966180b159ced619f'
+local hash='21574e4e8e24f53171ffb07792d61d06d3b6c11c'
+local branch='main'
 
 ## Dependency Overrides
 local -i shared_libs=0
@@ -12,7 +13,7 @@ local -i shared_libs=0
 ## Build Steps
 setup() {
   log_info "Setup (%F{3}${target}%f)"
-  setup_dep ${url} ${hash}
+  setup_dep ${url} ${hash} ${branch}
 }
 
 clean() {
@@ -39,7 +40,7 @@ config() {
     -DAJANTV2_DISABLE_DRIVER=ON
     -DAJANTV2_DISABLE_TESTS=ON
     -DAJANTV2_DISABLE_TOOLS=ON
-    -DAJANTV2_DISABLE_PLUGINS=ON
+    -DAJANTV2_DISABLE_PLUGIN_LOAD=ON
     -DAJA_INSTALL_SOURCES=OFF
     -DAJA_INSTALL_HEADERS=ON
     -DAJA_INSTALL_MISC=OFF
